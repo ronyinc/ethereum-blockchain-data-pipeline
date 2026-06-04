@@ -1,5 +1,13 @@
 
-{{ config(materialized='view')}}
+{{ config(
+            materialized='incremental',
+            incremental_strategy='merge',
+            unique_key='hash',
+            on_schema_change='sync_all_columns'
+        )
+}}
+
+
 
 select
 
@@ -24,3 +32,9 @@ from {{ ref('stg_transactions')}} t
 
 left join
             {{ ref('token_transfer_aggs')}} tt on t.hash = tt.transaction_hash
+
+{% if is_incremental() %}
+
+where t.date >= (select max(date) from {{ this }})
+
+{% endif %}
