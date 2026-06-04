@@ -1,0 +1,91 @@
+
+version: 2
+
+models:
+  - name: stg_contracts
+    description: ""
+    columns:
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: block_number
+        data_type: number
+        description: ""
+
+      - name: block_timestamp
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: bytecode
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: last_modified
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_token_transfers
+    description: ""
+    columns:
+      - name: transaction_hash
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: token_address
+        data_type: varchar
+        description: ""
+
+      - name: value
+        data_type: float
+        description: ""
+
+  - name: stg_transactions
+    description: ""
+    columns:
+      - name: hash
+        data_type: varchar
+        description: "unique transaction hash for each transaction"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: block_number
+        data_type: number
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: from_address
+        data_type: varchar
+        description: ""
+
+      - name: to_address
+        data_type: varchar
+        description: ""
+
+      - name: value
+        data_type: float
+        description: ""
+
+      - name: receipt_contract_address
+        data_type: varchar
+        description: ""
+
+      - name: input
+        data_type: varchar
+        description: ""
+
+      - name: new_field
+        data_type: number
+        description: ""

@@ -1,0 +1,60 @@
+
+version: 2
+
+models:
+  - name: eth_activity_per_day
+    description: ""
+    columns:
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: transaction_category
+        data_type: varchar
+        description: ""
+
+      - name: tx_count
+        data_type: number
+        description: ""
+
+      - name: sum_eth_value
+        data_type: float
+        description: ""
+
+  - name: stablecoin_activity_per_day
+    description: ""
+    columns:
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: token_address
+        data_type: varchar
+        description: ""
+
+      - name: type
+        data_type: varchar
+        description: ""
+
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: total_value
+        data_type: float
+        description: ""
+
+  - name: token_activity_per_day
+    description: ""
+    columns:
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: token_address
+        data_type: varchar
+        description: ""
+
+      - name: total_value
+        data_type: float
+        description: ""
