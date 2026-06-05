@@ -1,11 +1,4 @@
 
-{{ config(
-            materialized='incremental',
-            incremental_strategy='merge',
-            unique_key='hash',
-            on_schema_change='sync_all_columns'
-        )
-}}
 
 select
         hash,
@@ -15,13 +8,7 @@ select
         to_address,
         value,
         receipt_contract_address,
-        input,
-        1 as new_field
+        input
 
 from {{ source('eth', 'transactions')}}
 
-{% if is_incremental() %}
-
-where date >= (select max(date) from {{ this }})
-
-{% endif %}
