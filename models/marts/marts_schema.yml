@@ -3,7 +3,10 @@ version: 2
 
 models:
   - name: eth_activity_per_day
-    description: ""
+    description: "tracking ethereum activity per day"
+    data_tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
     columns:
       - name: date
         data_type: date

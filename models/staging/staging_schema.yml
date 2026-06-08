@@ -76,7 +76,11 @@ models:
 
       - name: value
         data_type: float
-        description: ""
+        description: "ETH value of the transaction"
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              strictly:  false
 
       - name: receipt_contract_address
         data_type: varchar
