@@ -6,3 +6,5 @@ select
         value
 
 from {{ source('eth','token_transfers')}}
+
+{{ dev_row_filter('date') }}
