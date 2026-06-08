@@ -1,4 +1,4 @@
-{{ config(materialized='view')}}
+
 
 select
     address,
@@ -9,3 +9,5 @@ select
     last_modified
 
 from {{ source('eth', 'contracts')}}
+
+{{ dev_row_filter('date') }}
