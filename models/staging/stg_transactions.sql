@@ -12,3 +12,4 @@ select
 
 from {{ source('eth', 'transactions')}}
 
+{{ dev_row_filter('date') }}
