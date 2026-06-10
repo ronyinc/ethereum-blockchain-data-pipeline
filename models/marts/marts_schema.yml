@@ -73,3 +73,18 @@ models:
       - name: total_value
         data_type: float
         description: ""
+
+  - name: confirmed_frauds
+    description: ""
+    columns:
+      - name: from_address
+        data_type: varchar
+        description: ""
+
+      - name: bytecode
+        data_type: varchar
+        description: ""
+
+      - name: bytecode_count
+        data_type: number
+        description: ""        
