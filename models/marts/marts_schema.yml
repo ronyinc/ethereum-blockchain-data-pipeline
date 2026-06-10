@@ -3,6 +3,10 @@ version: 2
 
 models:
   - name: eth_activity_per_day
+    config:
+      contract:
+        enforced: true
+        alias_types: false
     description: "tracking ethereum activity per day"
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:
@@ -25,6 +29,10 @@ models:
         description: ""
 
   - name: stablecoin_activity_per_day
+    config:
+      contract:
+        enforced: true
+        alias_types: false
     description: ""
     columns:
       - name: date
@@ -48,6 +56,10 @@ models:
         description: ""
 
   - name: token_activity_per_day
+    config:
+      contract:
+        enforced: true
+        alias_types: false
     description: ""
     columns:
       - name: date
