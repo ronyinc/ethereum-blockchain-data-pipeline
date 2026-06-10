@@ -93,3 +93,18 @@ models:
       - name: new_field
         data_type: number
         description: ""
+
+  - name: stg_fraud
+    description: ""
+    columns:
+      - name: from_address
+        data_type: varchar
+        description: ""
+
+      - name: bytecode
+        data_type: varchar
+        description: ""
+
+      - name: bytecode_count
+        data_type: number
+        description: ""
