@@ -35,6 +35,9 @@ left join
 
 {% if is_incremental() %}
 
-where t.date >= (select max(date) from {{ this }})
+where t.date >= (
+                  select coalesce(max(date),'1900-01-01') 
+                  from {{ this }}
+                )
 
 {% endif %}
