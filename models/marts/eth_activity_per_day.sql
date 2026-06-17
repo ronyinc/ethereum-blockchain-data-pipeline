@@ -1,6 +1,8 @@
 
 {{ config(tags=['eth']) }}
 
+---  practice ci change
+
 select
         date,
         transaction_category,
