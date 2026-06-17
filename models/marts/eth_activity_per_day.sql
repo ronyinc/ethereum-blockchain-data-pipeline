@@ -1,7 +1,7 @@
 
 {{ config(tags=['eth']) }}
 
----  practice ci changes .  change  2.0
+---  practice ci changes .  change  3.0
 
 select
         date,
