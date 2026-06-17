@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -49,5 +51,20 @@ jobs:
       - name: Run dbt debug
         run: dbt debug --target ci
 
-      - name: Run dbt
-        run: dbt build --select state:modified+ --defer --state state --target ci 
+      - name: Create state manifest from master
+        run: |
+          git checkout master
+          dbt deps
+          dbt parse --target prod
+          mkdir -p state
+          cp target/manifest.json state/manifest.json
+          git checkout -
+
+      - name: Show modified nodes
+        run: |
+          dbt ls --state ./state --select state:modified+          
+
+      # ---- Then slim build ----
+      - name: Slim build (modified + downstream)
+        run: |
+          dbt build --target ci --state ./state --defer --select "state:modified+"
