@@ -47,8 +47,22 @@ jobs:
       - name: dbt deps
         run: dbt deps --target prod
 
-      - name: dbt compile
-        run: dbt compile --target prod
+      - name: Parse project
+        run: dbt parse --target prod
 
-      - name: dbt build (prod)
-        run: dbt build --target prod
+      - name: Create state manifest from dev 
+        run: |
+          git checkout dev
+          dbt deps
+          dbt parse --target prod
+          mkdir -p state
+          cp target/manifest.json state/manifest.json
+          git checkout master
+
+      - name: Show modified nodes
+        run: |
+          dbt ls --target prod --state ./state --select state:modified+
+
+      - name: Slim ci build (modified +  downstream)
+        run: |
+          dbt build --target prod --state ./state --defer --select "state:modified+"              
