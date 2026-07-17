@@ -57,11 +57,11 @@ jobs:
           dbt parse --target prod
           mkdir -p state
           cp target/manifest.json state/manifest.json
-          git checkout -
+          git checkout master
 
       - name: Show modified nodes
         run: |
-          dbt ls --state ./state --select state:modified+
+          dbt ls --target prod --state ./state --select state:modified+
 
       - name: Slim ci build (modified +  downstream)
         run: |
