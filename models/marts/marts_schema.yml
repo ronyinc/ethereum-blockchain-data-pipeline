@@ -20,7 +20,7 @@ models:
         data_type: varchar
         description: ""
 
-      - name: tx_count
+      - name: transaction_count
         data_type: number
         description: ""
 
